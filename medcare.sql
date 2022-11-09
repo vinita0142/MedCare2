@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 07, 2022 at 08:14 PM
+-- Generation Time: Nov 09, 2022 at 06:22 PM
 -- Server version: 10.4.25-MariaDB
 -- PHP Version: 8.1.10
 
@@ -28,11 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `apptdetails` (
-  `id` varchar(40) NOT NULL,
+  `aptID` int(20) NOT NULL,
+  `email` varchar(20) NOT NULL,
   `dname` varchar(40) NOT NULL,
   `spec` varchar(40) NOT NULL,
   `fee` int(4) NOT NULL DEFAULT 500,
-  `date` datetime NOT NULL,
+  `date` date NOT NULL,
+  `time` time NOT NULL,
   `cdate` date NOT NULL DEFAULT current_timestamp(),
   `status` varchar(15) NOT NULL DEFAULT 'Pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -41,14 +43,27 @@ CREATE TABLE `apptdetails` (
 -- Dumping data for table `apptdetails`
 --
 
-INSERT INTO `apptdetails` (`id`, `dname`, `spec`, `fee`, `date`, `cdate`, `status`) VALUES
-('test@gmail.com', 'Dr.Rakesh K', 'Ortho', 500, '2022-10-22 09:00:00', '2022-10-21', 'Pending'),
-('vinitavaswani24@gmail.com', 'Dr. Mukesh', 'Physician', 400, '2022-10-25 13:00:00', '2022-10-21', 'Pending'),
-('test@gmail.com', 'Dr.Ramesh K', 'Physician', 400, '2022-10-28 12:00:00', '2022-10-23', 'Pending'),
-('test@gmail.com', 'Dasy', 'Radiology', 500, '2022-10-28 16:40:00', '2022-10-20', 'Pending'),
-('test@gmail.com', 'Regie', 'Pediatrics', 500, '2022-12-07 18:30:00', '2022-10-20', 'Pending'),
-('test@gmail.com', 'Dasy', 'Pediatrics', 500, '2022-10-25 09:23:00', '2022-10-20', 'Pending'),
-('test@gmail.com', 'Regie', 'Gynecologist', 500, '2022-11-04 14:00:00', '2022-10-26', 'Pending');
+INSERT INTO `apptdetails` (`aptID`, `email`, `dname`, `spec`, `fee`, `date`, `time`, `cdate`, `status`) VALUES
+(1, 'test@gmail.com', ' Dr. Madhu M ', 'Dermatologist', 500, '2022-11-09', '01:15:00', '2022-11-09', 'Pending'),
+(2, 'test@gmail.com', ' Dr. Kannan R ', 'General Physician', 500, '2022-11-16', '10:30:00', '2022-11-09', 'Pending'),
+(3, 'test@gmail.com', ' Dr. Madhu M ', 'Dermatologist', 500, '2022-11-09', '01:15:00', '2022-11-09', 'Pending'),
+(4, 'test@gmail.com', ' Dr. Rakesh M ', 'ENT Specialist', 500, '2022-12-01', '02:30:00', '2022-11-09', 'Pending'),
+(5, 'test@gmail.com', ' Dr. Kannan R ', 'General Physician', 500, '2022-11-16', '03:00:00', '2022-11-09', 'Pending'),
+(6, 'test@gmail.com', ' Dr. Kannan R ', 'General Physician', 500, '2022-11-25', '07:00:00', '2022-11-09', 'Pending'),
+(7, 'test@gmail.com', ' Dr. Kannan R ', 'General Physician', 500, '2022-11-09', '01:00:00', '2022-11-09', 'Pending'),
+(8, 'test@gmail.com', ' Dr. Madhu M ', 'Dermatologist', 500, '2022-11-09', '01:15:00', '2022-11-09', 'Pending'),
+(9, 'test@gmail.com', ' Dr. Madhu M ', 'Dermatologist', 500, '2022-11-09', '01:15:00', '2022-11-09', 'Pending'),
+(10, 'test@gmail.com', ' Dr. Kannan R ', 'General Physician', 500, '2022-11-30', '10:15:00', '2022-11-09', 'Pending'),
+(11, 'test@gmail.com', ' Dr. Kannan R ', 'General Physician', 500, '2022-11-30', '10:15:00', '2022-11-09', 'Pending'),
+(12, 'test@gmail.com', ' Dr. Madhu M ', 'Dermatologist', 500, '2022-11-30', '10:15:00', '2022-11-09', 'Pending'),
+(13, 'test@gmail.com', ' Dr. Madhu M ', 'Dermatologist', 500, '2022-11-15', '10:15:00', '2022-11-09', 'Pending'),
+(14, 'test@gmail.com', 'Select Doctor', 'Select Specialization', 500, '2023-01-05', '10:15:00', '2022-11-09', 'Pending'),
+(15, 'test@gmail.com', ' Dr. Madhu M ', 'Dermatologist', 500, '2022-11-30', '10:15:00', '2022-11-09', 'Pending'),
+(16, 'test@gmail.com', ' Dr. Swarna P ', 'Dermatologist', 500, '2022-12-01', '10:15:00', '2022-11-09', 'Pending'),
+(17, 'test@gmail.com', 'Select Doctor', 'Select Specialization', 500, '2022-12-01', '10:15:00', '2022-11-09', 'Pending'),
+(18, 'test@gmail.com', ' Dr. Kannan R ', 'General Physician', 500, '2022-12-08', '10:15:00', '2022-11-09', 'Pending'),
+(19, 'test@gmail.com', ' Dr. Madhu M ', 'Dermatologist', 500, '2022-11-09', '10:15:00', '2022-11-09', 'Pending'),
+(20, 'test@gmail.com', ' Dr. Kannan R ', 'General Physician', 500, '2022-12-01', '10:15:00', '2022-11-09', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -105,27 +120,62 @@ INSERT INTO `login` (`email`, `password`, `username`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `patientdetails`
+--
+
+CREATE TABLE `patientdetails` (
+  `email` varchar(20) NOT NULL,
+  `name` varchar(30) NOT NULL,
+  `phone` int(10) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `addr` varchar(70) NOT NULL,
+  `age` int(2) NOT NULL,
+  `height` int(3) NOT NULL,
+  `weight` int(3) NOT NULL,
+  `history` varchar(70) NOT NULL,
+  `bloodGroup` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `patientdetails`
+--
+
+INSERT INTO `patientdetails` (`email`, `name`, `phone`, `gender`, `addr`, `age`, `height`, `weight`, `history`, `bloodGroup`) VALUES
+('test@gmail.com', 'kbvfkjbfv', 2147483647, 'male', ',fv,', 20, 160, 60, 'm,d', 'O+');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `patientlogin`
 --
 
 CREATE TABLE `patientlogin` (
   `username` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL,
-  `password` varchar(15) NOT NULL
+  `password` varchar(15) NOT NULL,
+  `completed` varchar(20) NOT NULL DEFAULT 'na'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `patientlogin`
 --
 
-INSERT INTO `patientlogin` (`username`, `email`, `password`) VALUES
-('random', 'random123@gmail.com', 'random457'),
-('test123', 'test@gmail.com', 'test123'),
-('random245@gmail.com', 'vinita4785', 'random');
+INSERT INTO `patientlogin` (`username`, `email`, `password`, `completed`) VALUES
+('test5@gmail.com', 'newTest123$%', 'test5@', 'na'),
+('random', 'random123@gmail.com', 'random457', 'na'),
+('test5@gmail.com', 'test123', 'test5@', 'na'),
+('test123', 'test@gmail.com', 'test123', 'completed'),
+('random245@gmail.com', 'vinita4785', 'random', 'na');
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `apptdetails`
+--
+ALTER TABLE `apptdetails`
+  ADD PRIMARY KEY (`aptID`);
 
 --
 -- Indexes for table `doctorlogin`
@@ -140,10 +190,26 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`email`);
 
 --
+-- Indexes for table `patientdetails`
+--
+ALTER TABLE `patientdetails`
+  ADD PRIMARY KEY (`email`);
+
+--
 -- Indexes for table `patientlogin`
 --
 ALTER TABLE `patientlogin`
   ADD PRIMARY KEY (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `apptdetails`
+--
+ALTER TABLE `apptdetails`
+  MODIFY `aptID` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

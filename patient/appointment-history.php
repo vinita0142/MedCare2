@@ -104,7 +104,7 @@ while ($row = mysqli_fetch_array($sql)) { ?>
 											</td>
 											<td><?php echo $row['cdate']; ?></td>
 											<td><?php echo $row['status']; ?></td>
-											<td><a href="#">Join</a></td>
+											<td><a href="../VideoCalling/video.html">Join</a></td>
 											<td><button onclick="myFunction()"><a href="#">Cancel</a></button></td>
 											<!-- <td><a href="cancel.php">Cancel</a></td> -->
 										</tr>

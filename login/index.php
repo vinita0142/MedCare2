@@ -21,7 +21,7 @@
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT US</a></li>
                 <li><a href="services.html">OUR SERVICES</a></li>
-                <li><a href="map2.html">NEAREST HOSPITAL</a></li>
+                <li><a href="map.html">NEAREST HOSPITAL</a></li>
                 <li><a href="contact.html">CONTACT US</a></li>
                 <li><a href="./talk.html">CONSULT DOCTOR</a></li>
 

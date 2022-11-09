@@ -12,6 +12,25 @@ if ($name == 'doctor') {
 }
 $result = mysqli_query($con, $sql);
 $name = '';
+// $num=mysqli_num_rows($result);
+// if($num==0){
+//     echo '<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></sodium_crypto_sign_ed25519_pk_to_curve25519>
+//     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+//     <script type="text/javascript">
+    
+//         $(document).ready(function() {
+//             swal({
+//                 title: "Login failed",
+//                 text: "User does not exist Please register",
+//                 icon: "error",
+//                 button: "Ok",
+//                 timer: 5000
+//             }).then(function(){
+//                 window.location="index.php";
+//             });
+//         });
+//     </script>';
+// }
 if ($num = mysqli_num_rows($result)) {
     while ($row = mysqli_fetch_array($result)) {
         $name = $row['username'];

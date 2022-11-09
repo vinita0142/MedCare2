@@ -34,7 +34,7 @@ if ($num == 1) {
     if ($name == 'doctor') {
         $reg = "insert into doctorlogin values('$email','$password','$name')";
     } else {
-        $reg = "insert into patientlogin values('$email','$password','$name')";
+        $reg = "insert into patientlogin values('$email','$password','$name','na')";
     }
     mysqli_query($con, $reg);
     echo '<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>

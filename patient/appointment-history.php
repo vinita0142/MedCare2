@@ -105,8 +105,7 @@ while ($row = mysqli_fetch_array($sql)) { ?>
 											<td><?php echo $row['cdate']; ?></td>
 											<td><?php echo $row['status']; ?></td>
 											<td><a href="../VideoCalling/video.html">Join</a></td>
-											<td><button onclick="myFunction()"><a href="#">Cancel</a></button></td>
-											<!-- <td><a href="cancel.php">Cancel</a></td> -->
+											<td><a href="cancel.php">Cancel</a></td>
 										</tr>
 
 										<?php $cnt = $cnt + 1;}?>
@@ -162,12 +161,8 @@ while ($row = mysqli_fetch_array($sql)) { ?>
 			FormElements.init();
 		});
 	</script>
-	<script>
-		let text = "Are you sure you want to cancel";
-  if (confirm(text) == true) {
-	window.location = 'cancel.php', true;
-  }
-	</script>
+	<!-- end: JavaScript Event Handlers for this page -->
+	<!-- end: CLIP-TWO JAVASCRIPTS -->
 </body>
 
 </html>

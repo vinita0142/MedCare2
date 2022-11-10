@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mail-contact form</title>
+    <style>
+        *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+
+    background-color: #EEEEEE;
+}
+.container{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #FFFFDE   ;
+}
+.box{
+    border: 2px solid black;
+    padding: 20px;
+    font-size: 15px;
+    font-weight: 600;
+}
+#form input,textarea{
+    margin: 20px;
+    width: 80%;
+   
+    border: 1px solid #3F4E4F;
+}
+#form input{
+    border: 1px solid #3F4E4F;
+    height: 30px;
+    padding: 10px;
+}
+.btn{
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+    background-color: lightcoral;
+}
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="box">
+        <form id="form" onsubmit="SendEmail();reset(); return false;">
+          Name :
+          <input
+            type="text"
+            name="name"
+            id="name"
+            placeholder="Enter your name"
+          /><br />
+          contact :
+          <input
+            type="number"
+            name="contact"
+            id="contact"
+            placeholder="Enter your contact"
+          /><br />
+          Email :
+          <input
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Enter your email"
+          /><br />
+          Message:
+          <textarea
+            name="msg"
+            id=""
+            cols="30"
+            rows="10"
+            placeholder="Enter the message"
+          ></textarea>
+          <button type="submit" class="btn">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+      function SendEmail(){
+        Email.send({
+        Host: "smtp.elasticemail.com",
+        Username: "dhruvpant116@gmail.com",
+        Password: "0EC26C03768856A01EA3B61D48CBB2AEF4B9",
+        To: "dhruvpant116@gmail.com",
+        From: "dhruvpant116@gmail.com",
+        Subject: "Order Confirmation",
+        Body: "Order id is: 12345",
+      }).then((message) => window.location.href = "./sample.html");
+      }
+      
+    </script>
+  </body>
+</html>
